@@ -1,0 +1,20 @@
+# mount point       fstype    device                                                                flags
+/boot               emmc      /dev/block/platform/mtk-msdc.0/by-name/boot                           flags=display="Boot";backup=1;flashimg=1;
+/cache              ext4      /dev/block/platform/mtk-msdc.0/by-name/cache                          flags=display="Cache";
+/persistent         emmc      /dev/block/platform/mtk-msdc.0/by-name/frp                            flags=display="Persistent";
+/uboot              emmc      /dev/block/platform/mtk-msdc.0/by-name/lk                             flags=display="Uboot";
+/logo               emmc      /dev/block/platform/mtk-msdc.0/by-name/logo                           flags=display="Logo";
+/secro              emmc      /dev/block/platform/mtk-msdc.0/by-name/secro                          flags=display="Secro";
+/nvdata             ext4      /dev/block/platform/mtk-msdc.0/by-name/nvdata                         flags=display="Nvdata";
+/nvram              emmc      /dev/block/platform/mtk-msdc.0/by-name/nvram                          flags=display="Nvram";
+/recovery           emmc      /dev/block/platform/mtk-msdc.0/by-name/recovery                       flags=display="Recovery";backup=1;flashimg=1;
+/system             ext4      /dev/block/platform/mtk-msdc.0/by-name/system                         flags=display="System";backup=1;
+/system_image       emmc      /dev/block/platform/mtk-msdc.0/by-name/system                         flags=display="System image";backup=1;flashimg=1;
+/data               ext4      /dev/block/platform/mtk-msdc.0/by-name/userdata                       flags=display="Data";
+/mmc1               auto      auto                                                                  flags=display="Mmc1";logical;
+/11270000.usb3_xhci*sda*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sda*";logical;
+/11270000.usb3_xhci*sdb*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sdb*";logical;
+/11270000.usb3_xhci*sdc*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sdc*";logical;
+/11270000.usb3_xhci*sdd*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sdd*";logical;
+/11270000.usb3_xhci*sde*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sde*";logical;
+/11270000.usb3_xhci*sdf*auto      vfat                                                                  flags=display="11270000.usb3_xhci*sdf*";logical;
