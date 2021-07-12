@@ -1,0 +1,47 @@
+#JianRong.Zheng@Swdp.Android.EngineeringMode, 2016/11/02, Add for record engineermode test result
+on boot
+    mkdir /data/engineermode 0775 system system
+    mkdir /persist/engineermode 0775 system system
+    chmod 0644 /persist/engineermode/ENG_RESULT
+    mkdir /nvdata/engineermode 0775 system system
+    chmod 0664 /nvdata/engineermode/ENG_RESULT
+
+#Yang.Li@Swdp.Android.Power, 2014/12/10, Add for
+on property:sys.engineermode.chargeswitch=true
+    write /sys/class/power_supply/battery/mmi_charging_enable 1
+
+on property:sys.engineermode.chargeswitch=false
+    write /sys/class/power_supply/battery/mmi_charging_enable 0
+
+
+#JianRong.Zheng@Swdp.Android.EngineeringMode, 2014/07/21, Add for
+service engshell /system/bin/sh /init.oppo.engineermode.sh
+    class late_start
+    user root
+    oneshot
+
+service wifisocket /system/bin/sh -c "diag_socket_log -a 181.157.1.200 -p 2500 -r 10000"
+    user root
+    disabled
+    oneshot
+
+service opposysd /system/bin/oppo-system-daemon
+    class main
+    user root
+    group root qcom_diag
+    disabled
+
+on property:service.wifi.socket.enable=1
+    start opposysd
+    start wifisocket
+
+on property:service.wifi.socket.enable=0
+    stop opposysd
+    stop wifisocket
+
+#JianRong.Zheng@Swdp.Android.EngineeringMode, 2016/11/28, Add for sync panic and mtk log switch
+on property:debug.MB.running=1
+    setprop persist.sys.assert.panic true
+
+on property:debug.MB.running=0
+    setprop persist.sys.assert.panic false
